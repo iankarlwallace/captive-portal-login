@@ -6,6 +6,7 @@ const credentials = require('./credentials');
 const portalmain = require('./portalmain');
 const puppeteer = require('puppeteer');
 const util = require('util');
+const yargs = require('yargs');
 
 const testUrl = 'https://fedoraproject.org/static/hotspot.txt';
 let loginPage = null;
@@ -29,6 +30,32 @@ async function new_page(myBrowser) {
 
 async function run() {
   logger.info('Starting Captive Portal Login');
+
+  var myArgv = yargs
+  .option('username', {
+    alias: 'u',
+    demandOption: true,
+    default: '',
+    describe: 'Username to login with.',
+    type: 'string'
+  })
+  .option('password', {
+    alias: 'p',
+    demandOption: true,
+    default: '',
+    describe: 'Password for login.',
+    type: 'string'
+  })
+  .help()
+  .argv
+
+  if( myArgv.username !== undefined ) {
+    credentials.set_username(myArgv.username)
+  }
+
+  if( myArgv.password !== undefined ) {
+    credentials.set_password(myArgv.password)
+  }
 
   browser = await browser_open();
   let uname = await credentials.get_username();

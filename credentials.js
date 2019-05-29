@@ -14,14 +14,24 @@ var credentials = {
     return myVar;
   },
   get_username: async function() {
-    this.username = await this._if_undef_readline(this.username,
-      "Username: ");
+    if( this.username === undefined ) {
+      this.username = await this._if_undef_readline(this.username,
+        "Username: ");
+    }
     return this.username.toString();
   },
+  set_username: async function(uname) {
+    this.username = uname;
+  },
   get_password: async function() {
-    this.password = await this._if_undef_readline(this.password,
-      "Password: ");
+    if( this.password === undefined ) {
+      this.password = await this._if_undef_readline(this.password,
+        "Password: ");
+    }
     return this.password.toString();
+  },
+  set_password: async function(pword) {
+    this.password = pword;
   }
 };
 

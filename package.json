@@ -12,6 +12,7 @@
     "app-root-path": "^2.1.0",
     "puppeteer": "^1.12.2",
     "readline-sync": "^1.4.9",
-    "winston": "^3.2.1"
+    "winston": "^3.2.1",
+    "yargs": "^13.2.4"
   }
 }
