@@ -64,6 +64,7 @@ async function run() {
   while (true) {
     logger.info('Attempting login to site');
     loginPage = await new_page(browser);
+    loginPage.reload();
 
     try {
       await portalmain.login(loginPage, uname, pword);
