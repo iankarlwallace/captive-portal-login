@@ -9,6 +9,7 @@ verify_ssl = true
 bs4 = "*"
 requests = "*"
 argparse = "*"
+selenium = "*"
 
 [requires]
 python_version = "3.7"
